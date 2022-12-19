@@ -1,7 +1,7 @@
 <%--<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>--%>
 <%@page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--<%@ include file="navbar.jspf" %>--%>
+<%@ include file="navbar.jspf" %>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
@@ -26,14 +26,6 @@
         </c:choose>
     </div>
     <div id="formContainer" style="width: 500px; margin: auto;">
-        <div class="mb-3" align="left">
-            <label for="tituloObra" class="form-label" style="color: #262630;
-                   font-weight: bold;">título</label>
-            <input type="text" class="form-control bg-dark" id="tituloObra" name="tituloObra"
-                   value="${obra.getTitulo()}"
-                   placeholder="título da obra" style="color: antiquewhite; align-content: space-around;"
-                   required>
-        </div>
 
         <%--        div para imagem atual da obra--%>
         <div align="center" style="margin-bottom: 5%;">
@@ -63,7 +55,7 @@
                     excluir
                 </button>
                 <input type="submit" class="btn btn-dark" data-bs-dismiss="modal"
-                       formaction="/obras.action?idColab=${colaborador.getId()}" value="cancelar" formmethod="get" style="margin-left: 30%;"/>
+                       formaction="/obras.action" value="cancelar" formmethod="get" style="margin-left: 30%;"/>
             </c:if>
         </div>
 
@@ -81,10 +73,10 @@
                     </div>
                     <div class="modal-footer bg-dark">
                         <input type="submit" class="btn btn-outline-light" data-bs-dismiss="modal"
-                               formaction="/obra/salvar-obra.action?idColab=${colaborador.getId()}" formmethod="post" value="salvar"/>
+                               formaction="/obra/salvar-obra.action" formmethod="post" value="salvar"/>
                         <c:if test="${obra != null}">
                             <input type="submit" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                                   formaction="/obra/excluir-obra.action?idColab=${colaborador.getId()}" value="excluir" formmethod="post">
+                                   formaction="/obra/excluir-obra.action" value="excluir" formmethod="post">
                         </c:if>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cancelar</button>
                     </div>
@@ -95,4 +87,3 @@
     </div>
 </form>
 </body>
-<%--<%@ include file="footer.jspf" %>--%>
