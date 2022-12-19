@@ -6,12 +6,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<%--        <div class="collapse navbar-collapse" id="navbarSupportedContent">--%>
+<%--            <ul class="navbar-nav me-auto mb-2 mb-lg-0">--%>
 
-                <li><a class="nav-item" style="color: grey; padding-left: 5%;
-                            text-decoration: none;" href="/obras.action">obras</a></li>
-            </ul>
-        </div>
+<%--                <li><a class="nav-item" style="color: grey; padding-left: 5%;--%>
+<%--                            text-decoration: none;" href="/obras.action">obras</a></li>--%>
+<%--            </ul>--%>
+<%--        </div>--%>
     </div>
 </nav>
