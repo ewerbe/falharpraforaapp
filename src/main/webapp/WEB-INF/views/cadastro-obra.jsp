@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%--<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>--%>
 <%@page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--<%@ include file="navbar.jspf" %>--%>
@@ -35,98 +35,6 @@
                    required>
         </div>
 
-        <%--        select para o artista da obra--%>
-        <div class="mb-3" align="left">
-            <label for="artistaToObra" class="form-label" style="color: #262630;
-                   font-weight: bold;">artista</label>
-            <select class="form-control bg-dark" id="artistaToObra" name="artistaToObra"
-                    value="${obra.getArtista().getNome()}"
-                    required style="color: cornsilk;">
-                <c:forEach var="artistaToObra" items="${artistasToObra}">
-                    <c:choose>
-                        <c:when test="${obra.getArtista() != null}">
-                            <c:if test="${obra.getArtista() == artistaToObra}">
-                                <option value="${obra.getArtista().getId()}" selected>${artistaToObra.getNome()}</option>
-                            </c:if>
-                            <option value="${artistaToObra.getId()}">${artistaToObra.getNome()}</option>
-                        </c:when>
-                        <c:otherwise>
-                            <option value="${artistaToObra.getId()}">${artistaToObra.getNome()}</option>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
-            </select>
-        </div>
-
-        <%--        select para a linguagem da obra--%>
-        <div class="mb-3" align="left">
-            <label for="linguagemToObra" class="form-label" style="color: #262630;
-                   font-weight: bold;">linguagem</label>
-            <select class="form-control bg-dark" id="linguagemToObra" name="linguagemToObra"
-                    value="${obra.getLinguagem().getDescricao()}"
-                    required style="color: cornsilk;">
-                <c:forEach var="linguagemToObra" items="${linguagensToObra}">
-                    <c:choose>
-                        <c:when test="${obra.getLinguagem() != null}">
-                            <c:if test="${obra.getLinguagem() == linguagemToObra}">
-                                <option value="${obra.getLinguagem().getId()}" selected>${linguagemToObra.getDescricao()}</option>
-                            </c:if>
-                            <option value="${linguagemToObra.getId()}">${linguagemToObra.getDescricao()}</option>
-                        </c:when>
-                        <c:otherwise>
-                            <option value="${linguagemToObra.getId()}">${linguagemToObra.getDescricao()}</option>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
-            </select>
-        </div>
-
-        <%--        select para a técnica da obra--%>
-        <div class="mb-3" align="left">
-            <label for="tecnicaToObra" class="form-label" style="color: #262630;
-                   font-weight: bold;">técnica</label>
-            <select class="form-control bg-dark" id="tecnicaToObra" name="tecnicaToObra"
-                    value="${obra.getTecnica().getDescricao()}"
-                    required style="color: cornsilk;">
-                <c:forEach var="tecnicaToObra" items="${tecnicasToObra}">
-                    <c:choose>
-                        <c:when test="${obra.getTecnica() != null}">
-                            <c:if test="${obra.getTecnica() == tecnicaToObra}">
-                                <option value="${obra.getTecnica().getId()}" selected>${tecnicaToObra.getDescricao()}</option>
-                            </c:if>
-                            <option value="${tecnicaToObra.getId()}">${tecnicaToObra.getDescricao()}</option>
-                        </c:when>
-                        <c:otherwise>
-                            <option value="${tecnicaToObra.getId()}">${tecnicaToObra.getDescricao()}</option>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
-            </select>
-        </div>
-
-        <%--        select para a prateleira da obra, caso seja parte do acervo--%>
-        <div class="mb-3" align="left">
-            <label for="prateleiraToObra" class="form-label" style="color: #262630;
-                   font-weight: bold;">prateleira do acervo</label>
-            <select class="form-control bg-dark" id="prateleiraToObra" name="prateleiraToObra"
-                    value="${obra.getPrateleira().getDescricao()}"
-                    required style="color: cornsilk;">
-                <c:forEach var="prateleiraToObra" items="${prateleirasToObra}">
-                    <c:choose>
-                        <c:when test="${obra.getPrateleira() != null}">
-                            <c:if test="${obra.getPrateleira() == prateleiraToObra}">
-                                <option value="${obra.getPrateleira().getId()}" selected>${prateleiraToObra.getDescricao()}</option>
-                            </c:if>
-                            <option value="${prateleiraToObra.getId()}">${prateleiraToObra.getDescricao()}</option>
-                        </c:when>
-                        <c:otherwise>
-                            <option value="${prateleiraToObra.getId()}">${prateleiraToObra.getDescricao()}</option>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
-            </select>
-        </div>
-
         <%--        div para imagem atual da obra--%>
         <div align="center" style="margin-bottom: 5%;">
             <c:if test="${obra != null}">
@@ -144,33 +52,6 @@
             <label class="input-group-text" for="imagemToObra">upload</label>
         </div>
 
-        <%--input number para altura da obra--%>
-        <div class="mb-3" align="left">
-            <label for="alturaObra" class="form-label" style="color: #262630;
-                    font-weight: bold;">altura</label>
-            <input type="number" min="0" step="0.01" class="form-control bg-dark" id="alturaObra" name="alturaObra"
-                   value="${obra.getAltura()}"
-                   placeholder="medida da altura da obra" style="color: antiquewhite;"
-                   required>
-        </div>
-
-        <%--input number para largura da obra--%>
-        <div class="mb-3" align="left">
-            <label for="larguraObra" class="form-label" style="color: #262630;
-                    font-weight: bold;">largura</label>
-            <input type="number" min="0" step="0.01" class="form-control bg-dark" id="larguraObra" name="larguraObra"
-                   value="${obra.getLargura()}"
-                   placeholder="medida da largura da obra" style="color: antiquewhite;">
-        </div>
-
-        <%--input number para o ano da obra--%>
-        <div class="mb-3" align="left">
-            <label for="anoToObra" class="form-label" style="color: #262630;
-                    font-weight: bold;">ano</label>
-            <input type="number" min="1900" max="2022" maxlength="4" class="form-control bg-dark" id="anoToObra" name="anoToObra"
-                   value="${obra.getAno()}"
-                   placeholder="ano da obra" style="color: antiquewhite;">
-        </div>
 
         <%--botões de salvar e excluir para obra--%>
         <div align="left">
