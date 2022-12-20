@@ -24,8 +24,8 @@ public class ObraService {
         return newObra;
     }
 
-    private Long countObras() {
-        return obraRepository.count();
+    public int countObras() {
+        return (int) obraRepository.count();
     }
 
     public Obra find(Long idObra) {

@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Random;
 
 
 @Controller
@@ -29,8 +30,13 @@ public class ObraController {
 
     @GetMapping({"/", "/home"})
     public String getIndex(Model model) {
-        //model.addAttribute("isGerente", true);
-        return "home";
+
+        //contar quantas obras tem no banco pra ter o númeor de ID para gerar randomicamente na tela.
+//        model.addAttribute("idObra", getIdObraToShow());
+        model.addAttribute("idObra", getIdObraToShow());
+       // Long maxId = getTotalObras();
+
+        return "hellostrange";
     }
 
     @RequestMapping(value = "/cadastro-obra.action", method = RequestMethod.POST)
@@ -109,5 +115,23 @@ public class ObraController {
     private byte[] multipartFileToByte(MultipartFile img) throws IOException {
         byte[] bytesImg = img.getBytes();
         return bytesImg;
+    }
+
+    private int getTotalObras() {
+        int total = obraService.countObras();
+        return total;
+    }
+
+    private Long getIdObraToShow() {
+//        Long idObraToShow = new Random().nextInt()
+        Random random = new Random();
+        int upperbound = getTotalObras();
+        Long idObraToShow;
+
+        do{
+            idObraToShow = Long.valueOf(random.nextInt(upperbound));
+        } while(idObraToShow == 0 || idObraToShow == null || idObraToShow == 2);
+
+        return idObraToShow;
     }
 }
